@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import { useSession, signIn, signOut } from "next-auth/react"
 import Login from '../components/Login';
+import SideBar from '../components/SideBar';
 
 export default function Home() {
   const { data: session } = useSession()
@@ -13,14 +14,15 @@ export default function Home() {
   }
   // Otherwise we return the app itself
   return (
-    <div>
+    <div className="h-screen overflow-hidden bg-gray-100">
       <Head>
         <title>Facebook App</title>
       </Head>
       {/* Header section*/}
       <Header/>
-      <main>
+      <main className='flex'>
         {/* Sidebar section*/}
+        <SideBar/>
         {/* Feed section*/}
         {/* Widgets section */}
       </main>
