@@ -58,8 +58,7 @@ function Header() {
         </div>
         {/* Right */}
         <div className="flex items-center justify-end sm:space-x-2">
-            {/* Profile pic */}
-             
+            {/* We pull sthe user image from facebook */}
             <Image  onClick={signOut}
                     className="rounded-full cursor-pointer"
                     src={session.user.image}
@@ -67,7 +66,10 @@ function Header() {
                     height={40}
                     layout="fixed"
                     alt=""/>
-            <p className="pr-3 font-semibold whitespace-wrap">Damien Biabiany</p>
+            <p className="pr-3 font-semibold whitespace-wrap">
+                {/* We pull the user name from facebook */}
+                {session.user.name}
+            </p>
             {/* We create our own utility class: icon */}
             <ViewGridIcon className='icon'/>
             <ChatIcon className='icon'/>
