@@ -1,18 +1,17 @@
 import Head from 'next/head';
 import Header from '../components/Header';
 import { useSession, signIn, signOut } from "next-auth/react"
-
+import Login from '../components/Login';
 
 export default function Home() {
   const { data: session } = useSession()
   // If there is no session we return a Login component
-  if(session) {
+  if(!session) {
     return <>
-      Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>
+      <Login/>
     </>
   }
-  // Otherwise we retunr the app itself
+  // Otherwise we return the app itself
   return (
     <div>
       <Head>
