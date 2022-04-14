@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Injecting our own custom utility classes */
+@layer component {
+     /*
+        @apply allows us to write Tailwindcss to the config
+        The icons will be hidden in small screens
+        And the icons will be in display-flex
+        when we hits the extra large breakpoint.
+    */
+    .icon {
+        @apply hidden w-10 h-10 p-2 text-gray-500 bg-gray-200 rounded-full cursor-pointer xl:inline-flex hover:bg-gray-300;
+    }
+}

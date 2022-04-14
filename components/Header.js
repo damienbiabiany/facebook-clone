@@ -32,7 +32,8 @@ function Header() {
                     alt=""/>
             <div className="flex items-center p-2 ml-2 bg-gray-100 rounded-full">
                 <SearchIcon className="h-6 text-gray-600"/>
-                <input className="flex items-center ml-2 placeholder-gray-500 bg-transparent outline-none"
+                {/*Mobile first: Hide the input by default on mobile with hidden class*/}
+                <input className="items-center flex-shrink hidden ml-2 placeholder-gray-500 bg-transparent outline-none md:inline-flex"
                     type="text"
                     placeholder='Search Facebook'/>
             </div>
@@ -51,6 +52,15 @@ function Header() {
             </div>
         </div>
         {/* Right */}
+        <div className="flex items-center justify-end sm:space-x-2">
+            {/* Profile pic */}
+            <p className="pr-3 font-semibold whitespace-wrap">Damien Biabiany</p>
+            {/* We create our own utility class: icon */}
+            <ViewGridIcon className='icon'/>
+            <ChatIcon className='icon'/>
+            <BellIcon className='icon'/>
+            <ChevronDownIcon className='icon'/>
+        </div>
     </div>
   )
 }
