@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 function Login() {
   return (
-    <div className="grid place-items-center">
+    <div className="grid login--component place-items-center">
         {/* Image Component does lazy loading */}
         {/* objectFit attribute keeps the aspect ration of the image */}
         <Image  src={mypic}

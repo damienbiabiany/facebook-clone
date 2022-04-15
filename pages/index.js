@@ -15,7 +15,7 @@ export default function Home() {
   }
   // Otherwise we return the app itself
   return (
-    <div className="h-screen overflow-hidden bg-gray-100">
+    <div className="h-screen overflow-hidden bg-gray-100 app--component">
       <Head>
         <title>Facebook App</title>
       </Head>
