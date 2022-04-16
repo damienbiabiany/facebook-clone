@@ -1,15 +1,45 @@
 import Image from 'next/image';
 import { useSession } from "next-auth/react"
-import {EmojiHappyIcon} from "@heroicons/react/outline"
-import {CameraIcon, VideoCameraIcon} from "@heroicons/react/solid"
+import { useRef } from "react"
+
+/* Icons imports */
+import { EmojiHappyIcon } from "@heroicons/react/outline"
+import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid"
+
+/* firebase imports */
+import {db} from "../firebase"
+import {collection, serverTimestamp, addDoc } from "firebase/firestore";
 
 function InputBox() {
   // Get the user authenticate source state from useSession hook
   const { data: session } = useSession()
 
+  // Get the text for the input field
+  const inputRef = useRef(null)
+
   const sendPost =(e) => {
     e.preventDefault();
-  }
+
+    // If inputfield value is empty we not allow the user to send a post
+    if(!inputRef.current.value) return
+
+    try {
+
+      // Add a new document with a generated id to the collection posts
+      const docRef = addDoc(collection(db, 'posts'), {
+        message: inputRef.current.value, // from text user input
+        name: session.user.name,
+        email: session.user.email,
+        image: session.user.image,
+        timesTamp: serverTimestamp(),
+      });
+
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+
+      inputRef.current.value = ""; // clear the input value
+    }
 
   return (
     <div className="p-2 mt-6 font-medium text-gray-500 bg-white shadow-md inputBox--component rounded-2xl">
@@ -21,7 +51,7 @@ function InputBox() {
                     layout="fixed"
                     alt=""/>
             <form className="flex flex-1">
-               <input className="flex-grow h-12 px-5 bg-gray-100 rounded-full focus:outline-none" type="text" placeholder={`What's on your mind,${session.user.name}`}/>
+               <input className="flex-grow h-12 px-5 bg-gray-100 rounded-full focus:outline-none" type="text" ref={inputRef} placeholder={`What's on your mind,${session.user.name}`}/>
                <button hidden type="submit" onClick={sendPost}>Submit</button>
             </form>
         </div>
