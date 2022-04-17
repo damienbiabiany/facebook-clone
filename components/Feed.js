@@ -1,5 +1,7 @@
 import InputBox from "./InputBox"
+import Posts from "./Posts"
 import Stories from "./Stories"
+
 function Feed() {
   return (
     <div className="flex-grow h-screen pt-6 mr-4 overflow-y-auto feed--component pb-44 xl:mr-40">
@@ -10,6 +12,7 @@ function Feed() {
           <InputBox/>
           
           {/* Posts Section*/}
+          <Posts/>
         </div>
 
     </div>

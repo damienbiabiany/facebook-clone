@@ -38,14 +38,14 @@ function InputBox() {
         image: session.user.image,
         timesTamp: serverTimestamp(),
       }).then((doc) => {
-        /* 
-          To upload the image from state to the database 
+        /*
+          To upload the image from state to the database
           after the message post succeded
         */
 
          // if the user has successfully posted an image
          if(imageToPost) {
-              /* 
+              /*
                  - ref(): we get the storage bucket
                  - data_url: Since we're loading the image as DataUrl we need to upload it under the same format
               */
