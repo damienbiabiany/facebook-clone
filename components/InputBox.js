@@ -7,8 +7,9 @@ import { EmojiHappyIcon } from "@heroicons/react/outline"
 import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid"
 
 /* firebase imports */
-import {db} from "../firebase"
-import {collection, serverTimestamp, addDoc } from "firebase/firestore";
+import {db, storage } from "../firebase"
+import {collection, serverTimestamp, addDoc, setDoc } from "firebase/firestore";
+import { getStorage, uploadString, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function InputBox() {
   // Get the user authenticate source state from useSession hook
@@ -36,7 +37,71 @@ function InputBox() {
         email: session.user.email,
         image: session.user.image,
         timesTamp: serverTimestamp(),
-      });
+      }).then((doc) => {
+        /* 
+          To upload the image from state to the database 
+          after the message post succeded
+        */
+
+         // if the user has successfully posted an image
+         if(imageToPost) {
+              /* 
+                 - ref(): we get the storage bucket
+                 - data_url: Since we're loading the image as DataUrl we need to upload it under the same format
+              */
+              // firebase V9: https://firebase.google.com/docs/storage/web/create-reference
+              const storageRef = ref(storage, `posts/${doc.id}`);
+              // Data URL string
+              uploadString(storageRef, imageToPost, 'data_url').then((snapshot) => {
+                console.log('Uploaded a data_url string!');
+              });
+
+
+              removeImage()
+
+              const uploadTask = uploadBytesResumable(storageRef, imageToPost);
+              // Register three observers:
+              // 1. 'state_changed' observer, called any time the state changes
+              // 2. Error observer, called on failure
+              // 3. Completion observer, called on successful completion
+              uploadTask.on('state_changed',
+                  (snapshot) => {
+                    // Observe state change events such as progress, pause, and resume
+                    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log('Upload is ' + progress + '% done');
+                    switch (snapshot.state) {
+                      case 'paused':
+                        console.log('Upload is paused');
+                        break;
+                      case 'running':
+                        console.log('Upload is running');
+                        break;
+                    }
+                  },
+                  (error) => {
+                    // Handle unsuccessful uploads
+                    console.error(error)
+                  },
+                  () => {
+                    // Handle successful uploads on complete
+                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                      console.log('File available at', downloadURL);
+                      const postRef = doc(db, "posts", doc.id)
+                      /*
+                        If you are not sure if the document exists,
+                        use the option to merge the new data with any existing document
+                        to avoid overwriting entire documents.
+                      */
+                      setDoc(postRef, { postImage: downloadURL },
+                                    { merge: true });
+
+                    });
+                  }
+              );
+         }
+      })
 
     } catch (e) {
       console.error("Error adding document: ", e);
