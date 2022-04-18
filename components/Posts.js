@@ -31,7 +31,8 @@ function Posts() {
         {loading && <span>Collection: Loading...</span>}
         {realTimePosts && (
           <span>
-            {realTimePosts.docs.map((doc) => (
+            {/* reverse to get posts in descinding order by the timestamp value */}
+            {realTimePosts.docs.reverse().map((doc) => (
                 <React.Fragment key={doc.id}>
                <div className="flex flex-col">
                    <div className="p-5 mt-5 bg-white shadow-sm rounded-t-2xl">
