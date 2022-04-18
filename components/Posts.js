@@ -1,32 +1,75 @@
 import { useCollection } from 'react-firebase-hooks/firestore'
-import { query, orderBy } from "firebase/firestore"
+import { collection, query, orderBy, limit,getDocs } from "firebase/firestore"
+import { ref } from "firebase/storage"
+import {db, storage } from "../firebase"
+import { useState } from "react"
+import React from "react"
 import Post from './Post';
+import Image from 'next/image';
 
 function Posts() {
-    // firebase V9: https://firebase.google.com/docs/storage/web/create-reference
-    const postsRef = ref(storage, `posts/${doc.id}`);
 
-    const[realTimePosts, loadingState, errorState] = useCollection(
-        // https://firebase.google.com/docs/firestore/query-data/order-limit-data
-        query(postsRef, orderBy("timestamp", "desc"))
-    )
+    // https://github.com/CSFrequency/react-firebase-hooks/tree/v4.0.2/firestore
+    const [realTimePosts, loading, error] = useCollection(
+        collection(db, 'posts'),
+        {
+            snapshotListenOptions: { includeMetadataChanges: true },
+        }
+    );
+
+    // console.log("realTimePosts =", realTimePosts)
+
   return (
     <div>
-        {/* realTimePost.docs will return a list of posts */}
-        {
-        realTimePosts.docs.map(post => {
-            // For each post of the database we will render out a Post Component
-            <Post
-                key={post.id}
-                name={post.data().name}
-                message={post.data().message}
-                email={post.date().email}
-                timestamps={post.data().timestamps}
-                image={post.data().image}
-                postImage={post.data().postImage}
-            />
-        })
-        }</div>
+        {/*
+            realTimePost.docs will return a list of posts
+            We do an optional chaining ?. all the data are not there when loading
+        */}
+
+        <div>
+        {error && <strong>Error: {JSON.stringify(error)}</strong>}
+        {loading && <span>Collection: Loading...</span>}
+        {realTimePosts && (
+          <span>
+            {realTimePosts.docs.map((doc) => (
+                <React.Fragment key={doc.id}>
+               <div className="flex flex-col">
+                   <div className="p-5 mt-5 bg-white shadow-sm rounded-t-2xl">
+                        <div className="flex items-center space-x-2">
+                            {/* 
+                            {doc.data().email} */}
+                            {/* https://firebase.google.com/docs/reference/node/firebase.firestore.Timestamp */}
+                            {/* {doc.data().timestamp.toDate().toLocaleString()}
+                            {doc.data().image}
+                            {doc.data().postImage}  */}
+                            <img
+                                className="rounded-full"
+                                src={doc.data().image}
+                                width={40}
+                                height={40}
+                                alt=""
+                            />
+                            <div>
+                                <p className="font-medius">{doc.data().name}</p>
+                                <p className='text-xs text-gray-400'>
+                                {doc.data().timestamp?.toDate()?.toLocaleString()}
+                                </p>
+                            </div>
+                        </div>
+                        <p className="pt-4">{doc.data().message}</p>
+                    </div>
+                    {doc.data().postImage && (
+                        <div className="relative h-56 bg-white md:h-96">
+                            <Image src={doc.data().postImage} objectFit="cover" layout="fill"/>
+                        </div>
+                    )}
+                </div>
+                </React.Fragment>
+            ))}
+          </span>
+        )}
+        </div>
+        </div>
   )
 }
 

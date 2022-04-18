@@ -1,7 +1,12 @@
 
-function Post() {
+function Post(_doc,n) {
   return (
-    <div>Post</div>
+    <div>
+       xxx{n}
+       ---{_doc.message}
+       xxx{_doc.name}
+       ---{_doc.message}
+    </div>
   )
 }
 

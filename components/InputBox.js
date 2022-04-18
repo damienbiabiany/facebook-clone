@@ -7,9 +7,9 @@ import { EmojiHappyIcon } from "@heroicons/react/outline"
 import { CameraIcon, VideoCameraIcon } from "@heroicons/react/solid"
 
 /* firebase imports */
-import {db, storage } from "../firebase"
-import {collection, serverTimestamp, addDoc, setDoc } from "firebase/firestore";
-import { getStorage, uploadString, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { db, storage } from "../firebase"
+import { collection, serverTimestamp, addDoc, doc,updateDoc } from "firebase/firestore";
+import { uploadString, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 function InputBox() {
   // Get the user authenticate source state from useSession hook
@@ -36,8 +36,9 @@ function InputBox() {
         name: session.user.name,
         email: session.user.email,
         image: session.user.image,
-        timesTamp: serverTimestamp(),
-      }).then((doc) => {
+        timestamp: serverTimestamp(),
+      }).then((snapshot) => {
+        console.log("snapshot =", snapshot)
         /*
           To upload the image from state to the database
           after the message post succeded
@@ -50,7 +51,7 @@ function InputBox() {
                  - data_url: Since we're loading the image as DataUrl we need to upload it under the same format
               */
               // firebase V9: https://firebase.google.com/docs/storage/web/create-reference
-              const storageRef = ref(storage, `posts/${doc.id}`);
+              const storageRef = ref(storage, `posts/${snapshot.id}`);
               // Data URL string
               uploadString(storageRef, imageToPost, 'data_url').then((snapshot) => {
                 console.log('Uploaded a data_url string!');
@@ -81,21 +82,20 @@ function InputBox() {
                   },
                   (error) => {
                     // Handle unsuccessful uploads
-                    console.error(error)
+                    console.error("error =", error)
                   },
                   () => {
                     // Handle successful uploads on complete
                     // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                       console.log('File available at', downloadURL);
-                      const postRef = doc(db, "posts", doc.id)
+                      const postRef = doc(db, "posts", snapshot.id)
                       /*
                         If you are not sure if the document exists,
                         use the option to merge the new data with any existing document
                         to avoid overwriting entire documents.
                       */
-                      setDoc(postRef, { postImage: downloadURL },
-                                    { merge: true });
+                      updateDoc(postRef, { postImage: downloadURL });
 
                     });
                   }
