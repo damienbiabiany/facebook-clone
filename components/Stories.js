@@ -1,4 +1,11 @@
 import StoryCard from "./StoryCard"
+import { getStorage, ref, getDownloadURL} from "firebase/storage";
+import { db, storage } from "../firebase"
+
+/*
+  We need to get these infos from a database (firebase)
+  https://firebase.google.com/docs/storage/web/download-files
+*/
 
 const stories = [
     {

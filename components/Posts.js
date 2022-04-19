@@ -4,7 +4,6 @@ import { ref } from "firebase/storage"
 import {db, storage } from "../firebase"
 import { useState } from "react"
 import React from "react"
-import Post from './Post';
 import Image from 'next/image';
 import {ChatAltIcon,ShareIcon, ThumbUpIcon} from "@heroicons/react/outline"
 
@@ -21,7 +20,7 @@ function Posts() {
     // console.log("realTimePosts =", realTimePosts)
 
   return (
-    <div>
+    <div className="posts--component">
         {/*
             realTimePost.docs will return a list of posts
             We do an optional chaining ?. all the data are not there when loading
