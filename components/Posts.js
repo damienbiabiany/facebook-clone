@@ -6,6 +6,7 @@ import { useState } from "react"
 import React from "react"
 import Post from './Post';
 import Image from 'next/image';
+import {ChatAltIcon,ShareIcon, ThumbUpIcon} from "@heroicons/react/outline"
 
 function Posts() {
 
@@ -31,7 +32,7 @@ function Posts() {
         {loading && <span>Collection: Loading...</span>}
         {realTimePosts && (
           <span>
-            {/* reverse to get posts in descinding order by the timestamp value */}
+            {/* reverse to get posts in descending order according to the timestamp value */}
             {realTimePosts.docs.reverse().map((doc) => (
                 <React.Fragment key={doc.id}>
                <div className="flex flex-col">
@@ -57,20 +58,35 @@ function Posts() {
                                 </p>
                             </div>
                         </div>
-                        <p className="pt-4">{doc.data().message}</p>
+                        <p className="pt-4 font-bold">{doc.data().message}</p>
                     </div>
                     {doc.data().postImage && (
                         <div className="relative h-56 bg-white md:h-96">
                             <Image src={doc.data().postImage} objectFit="cover" layout="fill"/>
                         </div>
                     )}
+                    {/* Footer section of the post*/}
+                    <div className="flex items-center justify-between text-gray-400 bg-white border-t shadow-md rounded-b-2xl">
+                        <div className="rounded-none inputIcon rounded-b-2xl">
+                            <ThumbUpIcon className="h-4"/>
+                            <p className="text-xs sm:text-base">Like</p>
+                        </div>
+                        <div className="rounded-none inputIcon rounded-b-2xl">
+                            <ChatAltIcon className="h-4"/>
+                            <p className="text-xs sm:text-base">Comment</p>
+                        </div>
+                        <div className="rounded-none inputIcon rounded-b-2xl">
+                            <ShareIcon className="h-4"/>
+                            <p className="text-xs sm:text-base">Share</p>
+                        </div>
+                    </div>
                 </div>
                 </React.Fragment>
             ))}
           </span>
         )}
         </div>
-        </div>
+    </div>
   )
 }
 
