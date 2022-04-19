@@ -7,7 +7,7 @@ import React from "react"
 import Image from 'next/image';
 import {ChatAltIcon,ShareIcon, ThumbUpIcon} from "@heroicons/react/outline"
 
-function Posts() {
+function Posts({posts}) {
 
     // https://github.com/CSFrequency/react-firebase-hooks/tree/v4.0.2/firestore
     const [realTimePosts, loading, error] = useCollection(
@@ -16,6 +16,7 @@ function Posts() {
             snapshotListenOptions: { includeMetadataChanges: true },
         }
     );
+    console.log("posts =", posts)
 
     // console.log("realTimePosts =", realTimePosts)
 
