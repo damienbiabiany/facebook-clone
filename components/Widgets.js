@@ -1,6 +1,6 @@
 import {SearchIcon} from "@heroicons/react/outline"
 import {DotsCircleHorizontalIcon, VideoCameraIcon} from "@heroicons/react/solid"
-
+import Contact from "./Contact"
 /*
   We need to get these infos from a database (firebase)
   https://firebase.google.com/docs/storage/web/download-files
@@ -13,8 +13,9 @@ const contacts = [
     {src:"/assets/images_contacts/Morgan_Freeman.jpg", name:"Morgan Freeman"},
     {src:"/assets/images_contacts/Elon_Musk.jpg", name:"Elon Musk"},
     {src:"/assets/images_contacts/Jennifer_Lawrence.jpg", name:"Jennifer Lawrence"},
-    {src:"/assets/images_contacts/Eddy_Murphy.jpg", name:"Eddy Murphy"},
+    {src:"/assets/images_contacts/Eddie_Murphy.jpg", name:"Eddie Murphy"},
 ]
+
 function Widgets() {
   return (
     <div className="widgets--components hidden lg:flex flex-col w-60 p-2 mt-5">
@@ -25,8 +26,11 @@ function Widgets() {
             <SearchIcon className="h-6"/>
             <DotsCircleHorizontalIcon className="h-6"/>
         </div>
-
       </div>
+
+      {contacts.map((contact) => (
+          <Contact key={contact.name} src={contact.src} name={contact.name}/>
+      ))}
     </div>
   )
 }

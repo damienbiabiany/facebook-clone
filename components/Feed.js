@@ -8,9 +8,10 @@ function Feed() {
         <div className="max-w-md mx-auto md:max-w-lg lg:max-w-2xl">
           {/* Stories Section */}
           <Stories/>
+
           {/* InputBox Section */}
           <InputBox/>
-          
+
           {/* Posts Section*/}
           <Posts/>
         </div>
