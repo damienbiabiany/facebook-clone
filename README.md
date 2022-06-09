@@ -45,19 +45,22 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 
--------------------- NEXTJS --------------
+## SETTING NEXTJS:
 System Requirements: Node.js 12.22.0 or later
 
 How to install : https://www.npmjs.com/package/next
 github: https://github.com/vercel/next.js
 
 
-Current version of nextjs for the project: 12.1.4
+*Current version of nextjs for the project:*
+12.1.4
 
-Documentation(Nextjs): https://nextjs.org/docs
+*Documentation(Nextjs):*
+https://nextjs.org/docs
 
 
-Why use Nextjs for the project ?
+## Why use Nextjs for the project ?
+
 Déploiement en CLI et hébergement gratuit:
   	L'avantage que procure NextJS est la simplicité de déploiement. Des services  comme Vercel ou Netlify nous permettent de déployer l'application via le terminal et de bénéficier d'un CDN et d'un certificat SSL gratuitement.
 
@@ -72,21 +75,22 @@ d:
 cd D:\_Projects\Projets_en_cours
 
 1) On initialise le projet React avec Next.js
-npx create-next-app facebook-clone
+    npx create-next-app facebook-clone
 
 1.2) Aller dans le dossier du projet créé
-cd facebook-clone
+    cd facebook-clone
 
 1.3) Ouvrir le projet dans vscode
-code .
+    code .
 
 1.4) Lancer le projet sur le serveur local
-yarn run dev 
-or 
-npm run serve
+    yarn run dev 
+    or 
+    npm run serve
 
 --------  Tailwindcss Config ------
-Current version of Tailwindcss for the project: ^3.0.24
+Current version of Tailwindcss for the project:
+^3.0.24
 
 Documentation: https://tailwindcss.com/
 
@@ -96,15 +100,15 @@ https://hackernoon.com/10-reasons-to-use-tailwindcss-in-your-next-project
 
 
 
-Installing and  setup:
+## Installing and setup Tailwindcss:
 
 WARNING ARRETER LE SERVER LOCAL ==> CTRL + C
 
 Installation: Tailwind CLI - Tailwind CSS
 
-npm install -D tailwindcss@latest postcss autoprefixer
-or:
-yarn add -D tailwindcss@latest postcss autoprefixer
+    npm install -D tailwindcss@latest postcss autoprefixer
+    or:
+    yarn add -D tailwindcss@latest postcss autoprefixer
 
 
 (Dans le dossier facebook-clone) à la racine du projet
@@ -130,14 +134,7 @@ mode: 'jit'
 
 
 
-
-
-
-
-
-
-
--------------------- GIT --------------
+## Setting the project with GI:
 2) On crée le ficher Readme et on y insert une phrase
 echo "# facebook-clone" >> README.md
 
@@ -171,28 +168,27 @@ git push -u origin main
 
 
 
-—--  FIREBASE  —
-Current version of firebase SDK for the project: ^9.6.11
+## FIREBASE SDK package:
+> Current version of firebase SDK for the project: 
+^9.6.11
 
-Documentation: https://firebase.google.com/docs/web/setup
+*Documentation:* 
+https://firebase.google.com/docs/web/setup
 
 Why use firebase SDK for the project ?
-The Cloud Firestore presentation explains all its advantages very well.
+> The Cloud Firestore presentation explains all its advantages very well.
 https://firebase.google.com/docs/firestore
 
 
-Installing and  setup:
-yarn add firebase
-or
-npm install firebase
+## Installing and  setup firebase SDK:
+    yarn add firebase
+    or
+    npm install firebase
 
 Quelles les requêtes ont été effectuées?
 Code snippet use in the project:
 
-
-
-
-—-- REACT FIREBASE HOOKS MODULE  —
+## REACT FIREBASE HOOKS package
 Current version of firebase SDK for the project: ^5.0.3
 
 Documentation:
@@ -200,19 +196,19 @@ https://www.npmjs.com/package/react-firebase-hooks
 https://github.com/csfrequency/react-firebase-hooks
 
 Why use react firebase hooks module for the project ?
-A set of reusable React hooks for Firebase.
+> A set of reusable React hooks for Firebase.
 This library gives us the ability to use a set of React hooks to make integration with Firebase simple.
 
 
-Installing and  setup:
-# with npm
-npm install --save react-firebase-hooks
+## Installing and  setup react-firebase-hooks:
+*with npm:*
+    npm install --save react-firebase-hooks
 
-# with yarn
-yarn add react-firebase-hooks
+*with yarn:*
+    yarn add react-firebase-hooks
 
 
-Code snippet use in the project:
+    Code snippet use in the project:
 
 
 —-Account developper facebook  —-
@@ -226,8 +222,6 @@ Why use Account developper facebook for the project ?
 
 
 
-
-
 —-DOCUMENTATION - SERVER SIDE RENDERING—
 Documentation:
 
@@ -237,30 +231,23 @@ Code snippet use in the project:
 
 
 
-
-
-
-
-—-Mettre à jour node.js —
+## Mettre à jour node.js:
 
 ERROR:
 The engine "node" is incompatible with this module. Expected version "^12.19.0 || ^14.15.0 || ^16.13.0". Got "16.10.0"
 error Found incompatible module.
 
-current node version
-node -v ==> v16.10.0
+Get the current node version:
 
------ update node js ---
+  node -v
+  v16.10.0
+
+update node js ---
 Go to node official website and node js installer will automatically update the local version of node
 
 
-Why keeps node always updates  ?
 
-
-
-
-
-—--- NextAuth.js —--
+## NextAuth.js packages
 Current version of NextAuth.js for the project:  ^4.3.1
 
 Documentation:
@@ -268,73 +255,66 @@ https://next-auth.js.org/
 https://www.npmjs.com/package/next-auth
 
 
-Why use  NextAuth.js for the project ?
-The Introduction part of the NextAuth.js documentation explains very well all the advantages.
+## Why use  NextAuth.js for the project ?
+> The Introduction part of the NextAuth.js documentation explains very well all the advantages.
 (https://next-auth.js.org/getting-started/introduction)
 
-Installing and  setup:
-yarn add next-auth
+## Installing and setup NextAuth.js:
+    yarn add next-auth
 
-or 
-npm install --save next-auth
-
-
+    or 
+    npm install --save next-auth
 
 
-Session Provider
+## Session Provider
 Client API | NextAuth.js
 
 Code snippet use in the project:
 
 
+## tailwind scrollbar hide:
+> Current version of tailwind scrollbar hide for the project: 
+^1.1.7
 
-
-
-—-- tailwind scrollbar hide  —-
-Current version of tailwind scrollbar hide for the project: ^1.1.7
-
-Documentation:
+## Documentation:
 https://www.npmjs.com/package/tailwind-scrollbar-hide
 
-Why use tailwind scrollbar hide for the project ?
+> Why use tailwind scrollbar hide for the project ?
 This is a tailwindcss plugin to hide the scrollbar that is highly rated and very well maintained.
 
-Installing and  setup:
-# Using npm
-npm install tailwind-scrollbar-hide
+## Installing and setup:
+*Using npm:*
+    npm install tailwind-scrollbar-hide
 
-# Using Yarn
-yarn add tailwind-scrollbar-hide
+*Using Yarn:*
+    yarn add tailwind-scrollbar-hide
 
 Inside the tailwind.config.js file:
 insert the line
   plugins: [require("tailwind-scrollbar-hide")],
 
 
-—--- Font awesome —
-Current versions of  Font awesome modules for the project:
-"@fortawesome/fontawesome-svg-core":"^6.1.1",
+## Font awesome packages: 
+
+Current versions of Font awesome modules for the project:
+> "@fortawesome/fontawesome-svg-core":"^6.1.1",
 "@fortawesome/free-solid-svg-icons": "^6.1.1",
 "@fortawesome/react-fontawesome": "^0.1.18",
 
-Documentation:
+## Documentation:
 https://fontawesome.com/
 https://www.kindacode.com/article/how-to-use-font-awesome-icons-in-next-js/
 
-Why use Font awesome for the project ?
-Font Awesome is the icon library and toolkit of the Internet widely used by developers and designers around the world.
+## Why use Font awesome for the project ?
+> Font Awesome is the icon library and toolkit of the Internet widely used by developers and designers around the world.
 
-Installing and  setup:
-npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+## Installing and setup fontawesome:
 
-OR
+  npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 
-yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
+  OR
 
-
-Code snippet use in the project:
-
-
+  yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 
 
  — Heroicons —
