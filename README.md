@@ -45,8 +45,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 
-## SETTING NEXTJS:
-System Requirements: Node.js 12.22.0 or later
+## SETTING NEXTJS FOR THE PROJECT:
+*System Requirements:*
+Node.js 12.22.0 or later
 
 How to install : https://www.npmjs.com/package/next
 github: https://github.com/vercel/next.js
@@ -68,33 +69,33 @@ L'intérêt du Static Site Génération et Server Side Rendering:
 Un des critères les plus importants aux yeux de Google et des internautes est la vitesse de chargement d'un site. Avec un temps de chargement optimisé, vous améliorez votre expérience utilisateur et en découle un meilleur référencement sur Google.
 
 
-## Installing and  setup:
+## Installing and setup the next project with npx:
 
-d:
+- To the terminal go to the project directory:
+  cd ...
 
-cd D:\_Projects\Projets_en_cours
-
-1) On initialise le projet React avec Next.js
+- On initialise le projet React avec Next.js
     npx create-next-app facebook-clone
 
-1.2) Aller dans le dossier du projet créé
+- Aller dans le dossier du projet créé
     cd facebook-clone
 
-1.3) Ouvrir le projet dans vscode
+- Ouvrir le projet dans vscode
     code .
 
-1.4) Lancer le projet sur le serveur local
+- Lancer le projet sur le serveur local
     yarn run dev 
     or 
     npm run serve
 
---------  Tailwindcss Config ------
+## Tailwindcss Config:
 Current version of Tailwindcss for the project:
 ^3.0.24
 
-Documentation: https://tailwindcss.com/
+## Documentation: 
+https://tailwindcss.com/
 
-Why use Tailwindcss for the project ?
+## Why use Tailwindcss for the project ?
 https://dev.to/jeffreythecoder/4-reasons-why-i-start-using-tailwind-css-in-every-project-5b72#:~:text=Easy%20inline%20styling,with%20a%20more%20concise%20syntax.
 https://hackernoon.com/10-reasons-to-use-tailwindcss-in-your-next-project
 
@@ -118,23 +119,16 @@ npx tailwindcss init -p
 
 Optimizing for Production - Tailwind CSS
 
-
-
 (Dans le fichier global.scss)
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-— Just-in-Time Mode - Tailwind CSS —
+## SettingJust-in-Time Mode - Tailwind CSS:
 (Dans le fichier tailwind.config.js)
 mode: 'jit'
 
-
-
-## Setting the project with GI:
+## Setting the project with GIT:
 2) On crée le ficher Readme et on y insert une phrase
 echo "# facebook-clone" >> README.md
 
@@ -185,8 +179,7 @@ https://firebase.google.com/docs/firestore
     or
     npm install firebase
 
-Quelles les requêtes ont été effectuées?
-Code snippet use in the project:
+Which requests?
 
 ## REACT FIREBASE HOOKS package
 Current version of firebase SDK for the project: ^5.0.3
