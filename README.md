@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Dependencies
+- [Next-auth](https://next-auth.js.org/)
+- [HeroIcon](https://github.com/tailwindlabs/heroicons)
+- [Tailwind CSS](https://tailwindcss.com/docs/installation)
+- [React Firebase Hook](https://www.npmjs.com/package/react-firebase-hooks)
+- [React Firebase Hook (V9)](https://github.com/CSFrequency/react-firebase-hooks/tree/v4.0.2)
+- [Firebase](https://firebase.google.com/docs/web/setup)
+- [tailwind-scrollbar-hide](https://www.npmjs.com/package/tailwind-scrollbar-hide)
+
 ## Getting Started
 
 First, run the development server:
