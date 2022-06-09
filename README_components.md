@@ -235,11 +235,8 @@ Get the current node version:
   node -v
   v16.10.0
 
-## Update node js:
+update node js ---
 Go to node official website and node js installer will automatically update the local version of node
-
-Official link:
-https://nodejs.org/en/
 
 
 
@@ -313,16 +310,14 @@ https://www.kindacode.com/article/how-to-use-font-awesome-icons-in-next-js/
   yarn add @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
 
 
-
-## Heroicons packages
-> Current version of  Heroicons for the project: 
-^1.0.6
+ — Heroicons —
+Current version of  Heroicons for the project: ^1.0.6
  
 
-## Documentation:
+Documentation:
 https://github.com/tailwindlabs/heroicons
 
-## Why use Heroicons for the project ?
+Why use Heroicons for the project ?
 > A set of 450+ free MIT-licensed high-quality SVG icons for you to use in your web projects.
 
 ## Installing and setup heroicons:
@@ -333,6 +328,9 @@ https://github.com/tailwindlabs/heroicons
 
     Code snippet use in the project:
 
+
+
+## The role 
 
 ## VSCODE PLUGINS  USED —-
 
